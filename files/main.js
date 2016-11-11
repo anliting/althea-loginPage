@@ -7,7 +7,7 @@ var
     failedSpan=     document.getElementById('failedSpan')
 module.styleByPath('plugins/althea-loginPage/main.css')
 username.focus()
-module.importByPath('lib/general.js').then(repository=>{
+module.importByPath('lib/general.js',{mode:1}).then(repository=>{
     module.repository=repository
     form.addEventListener('submit',e=>{
         e.preventDefault()
