@@ -5,7 +5,9 @@ var
     keepmeloggedin= document.getElementsByName('keepmeloggedin')[0],
     submitInput=    document.getElementById('submitInput'),
     failedSpan=     document.getElementById('failedSpan')
-module.styleByPath('plugins/althea-loginPage/main.css')
+module.styleByPath('plugins/althea-loginPage/main.css').then(main=>
+    document.head.appendChild(main)
+)
 username.focus()
 module.importByPath('lib/general.js',{mode:1}).then(general=>{
     general(module)
