@@ -1,3 +1,5 @@
+import style from './style.js'
+import{Site,dom,general}from '/lib/core.static.js'
 var
     form=           document.getElementsByTagName('form')[0],
     username=       document.getElementById('input_username'),
@@ -5,35 +7,22 @@ var
     keepmeloggedin= document.getElementsByName('keepmeloggedin')[0],
     submitInput=    document.getElementById('submitInput'),
     failedSpan=     document.getElementById('failedSpan')
-module.styleByPath('plugins/althea-loginPage/main.css').then(main=>
-    document.head.appendChild(main)
-)
+dom.head(dom.style(style))
 username.focus()
-module.importByPath('lib/general.js',{mode:1}).then(general=>{
-    general(module)
-    form.addEventListener('submit',e=>{
-        e.preventDefault()
-        submitInput.disabled=true
-        module.repository.althea.site.then(site=>
-            site.login(
-                username.value,
-                password.value,
-                keepmeloggedin.checked
-            )
-        ).then(res=>{
-            submitInput.disabled=false
-            if(res)
-                return location='/'
-            failedSpan.style.display=''
-        })
-    })
-    module.repository.althea.site.then(site=>
-        site.softCache('loginPluginScriptsCache',{
-            function:'getPluginScripts',
-            module:'login'
-        })
-    ).then(val=>{
-        Object.keys(val).forEach(i=>eval(val[i]))
+general()
+let site=new Site
+form.addEventListener('submit',e=>{
+    e.preventDefault()
+    submitInput.disabled=true
+    site.login(
+        username.value,
+        password.value,
+        keepmeloggedin.checked
+    ).then(res=>{
+        submitInput.disabled=false
+        if(res)
+            return location='/'
+        failedSpan.style.display=''
     })
 })
 document.getElementById('div_main').appendChild(createLinks())

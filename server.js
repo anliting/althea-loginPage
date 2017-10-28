@@ -41,9 +41,9 @@ function get(env){
     <input id=submitInput type=submit value='Log In'>
 </form>
 </div>
-<script src=${
-    env.environmentvariables.moduleUrl
-} data-main=plugins/althea-loginPage/main.js async></script>
+${
+    env.althea.loadModule('plugins/althea-loginPage/main.js')
+}
         `
     }
 }
