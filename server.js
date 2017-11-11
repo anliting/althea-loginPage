@@ -42,7 +42,7 @@ function get(env){
 </form>
 </div>
 ${
-    env.althea.loadModule('plugins/althea-loginPage/main.js')
+    env.althea.loadModule('plugins/loginPage/main.js')
 }
         `
     }
