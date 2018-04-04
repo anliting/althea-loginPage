@@ -1,6 +1,3 @@
-module.exports=function(althea){
-    althea.addPagemodule('/login',pagemodule)
-}
 function pagemodule(env){
     if(!env.althea.allowOrigin(env.envVars,env.request.headers.origin))
         return 403
@@ -46,4 +43,7 @@ ${
 }
         `
     }
+}
+export default althea=>{
+    althea.addPagemodule('/login',pagemodule)
 }
