@@ -1,5 +1,5 @@
 import style from './style.js'
-import{Site,dom,general}from '/lib/core.static.js'
+import{Site,doe,general}from '/lib/core.static.js'
 var
     form=           document.getElementsByTagName('form')[0],
     username=       document.getElementById('input_username'),
@@ -7,7 +7,7 @@ var
     keepmeloggedin= document.getElementsByName('keepmeloggedin')[0],
     submitInput=    document.getElementById('submitInput'),
     failedSpan=     document.getElementById('failedSpan')
-dom.head(dom.style(style))
+doe.head(doe.style(style))
 username.focus()
 general()
 let site=new Site
